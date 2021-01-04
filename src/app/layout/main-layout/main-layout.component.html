@@ -1,0 +1,39 @@
+
+
+<div class="container_menu">    
+    <div class="logo" [ngStyle]="{'justify-content': isExpandMenu ? '':'center'}" style="padding-top: 20px;">
+        <div class="rsu_text" [hidden]="!isExpandMenu">RSU</div>
+        <button mat-icon-button (click)="toggleMenu()" style="color: white;">
+            <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">
+                menu</mat-icon>
+        </button>
+    </div>
+    <div class="information" *ngIf="isExpandMenu">
+         <span class="username_text">{{nameUser}}</span>
+         <span class="email_text">{{mailUser}}</span>
+         <!-- <img class="user_img" src="assets/images/user.png" alt=""> -->
+    </div> 
+    <div class="menu_bg" *ngIf="isExpandMenu">
+        <span>MENU</span>
+    </div>
+    <mat-accordion color='primary' *ngIf="isExpandMenu">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: white;">
+                ตั้งค่า
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+                <div class="backgound_color_menu">
+                    <ul class="list_menu">
+                        <div *ngIf="role | showMenuRole: 'ALL'" routerLink="/app/Project" [routerLinkActive]="'menu_item'" (click)="gotoProjectSchedulePage()">
+                            <li>กำหนดโครงการ</li>
+                        </div>
+                       
+                    </ul>
+                </div>
+              </ng-template>
+          </mat-expansion-panel>
+    </mat-accordion>
+    <!-- report -->
+</div>
